@@ -20,26 +20,33 @@ import sys
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
-from typing import Generator, Optional
+from typing import ClassVar, Generator, Optional
 
 try:
     import requests
 except ImportError:
-    print("Installing requests...")
+    print("Warning: requests package not found, attempting to install...")
     import subprocess
 
-    subprocess.check_call(
-        [
-            sys.executable,
-            "-m",
-            "pip",
-            "install",
-            "requests",
-            "--break-system-packages",
-            "-q",
-        ]
-    )
-    import requests
+    try:
+        subprocess.check_call(
+            [
+                sys.executable,
+                "-m",
+                "pip",
+                "install",
+                "requests",
+                "--break-system-packages",
+                "-q",
+            ]
+        )
+        import requests
+
+        print("Successfully installed requests package")
+    except subprocess.CalledProcessError as e:
+        print(f"Error: Failed to install requests package: {e}")
+        print("Please install requests manually: pip install requests")
+        raise RuntimeError("Failed to install required 'requests' package") from e
 
 try:
     from openrouter import OpenRouter
@@ -186,7 +193,7 @@ class TextReader(DocumentReader):
 class CodeReader(DocumentReader):
     """Reads code files with language detection."""
 
-    LANGUAGE_MAP = {
+    LANGUAGE_MAP: ClassVar[dict[str, str]] = {
         ".py": "python",
         ".js": "javascript",
         ".ts": "typescript",
@@ -236,20 +243,30 @@ class PDFReader(DocumentReader):
         try:
             import pdfplumber
         except ImportError:
+            print("Warning: pdfplumber package not found, attempting to install...")
             import subprocess
 
-            subprocess.check_call(
-                [
-                    sys.executable,
-                    "-m",
-                    "pip",
-                    "install",
-                    "pdfplumber",
-                    "--break-system-packages",
-                    "-q",
-                ]
-            )
-            import pdfplumber
+            try:
+                subprocess.check_call(
+                    [
+                        sys.executable,
+                        "-m",
+                        "pip",
+                        "install",
+                        "pdfplumber",
+                        "--break-system-packages",
+                        "-q",
+                    ]
+                )
+                import pdfplumber
+
+                print("Successfully installed pdfplumber package")
+            except subprocess.CalledProcessError as e:
+                print(f"Error: Failed to install pdfplumber package: {e}")
+                print("Please install pdfplumber manually: pip install pdfplumber")
+                raise RuntimeError(
+                    "Failed to install required 'pdfplumber' package"
+                ) from e
 
         text_parts = []
         with pdfplumber.open(file_path) as pdf:
@@ -340,7 +357,7 @@ class SmartChunker:
         current_chunk = ""
         current_header = ""
 
-        for i, section in enumerate(sections):
+        for section in sections:
             if re.match(header_pattern, section):
                 current_header = section
                 continue
@@ -443,8 +460,8 @@ class LLMClient:
             if HAS_OPENROUTER:
                 self.openrouter_client = OpenRouter(api_key=self.config.llm_api_key)
             else:
-                print(
-                    "Warning: OpenRouter provider selected but openrouter package not installed. Falling back to generic HTTP."
+                logger.warning(
+                    "OpenRouter provider selected but openrouter package not installed. Falling back to generic HTTP."
                 )
 
     def complete(self, messages: list[dict], temperature: float = 0.3) -> str | None:
@@ -470,11 +487,10 @@ class LLMClient:
                         return response["message"]["content"]
                 return str(response)
             except Exception as e:
-                logger.error(
+                logger.exception(
                     f"OpenRouter SDK call failed for model {self.config.llm_model}: {e}"
                 )
-                logger.exception("Full traceback:")
-                return f"[ERROR: OpenRouter SDK call failed for model {self.config.llm_model}: {str(e)}]"
+                return f"[ERROR: OpenRouter SDK call failed for model {self.config.llm_model}: {e}]"
 
         payload = {
             "model": self.config.llm_model,
@@ -496,7 +512,7 @@ class LLMClient:
         )
 
         if response.status_code != 200:
-            raise Exception(
+            raise ValueError(
                 f"LLM request failed: {response.status_code} - {response.text}"
             )
 
@@ -532,20 +548,16 @@ Output format (JSON array):
       "importance": 0.0-1.0,
       "concepts": ["concept1", "concept2"],
 
-      // For SEMANTIC memories:
-      "confidence": 0.0-1.0,
+      "confidence": 0.85,
       "category": ["category1", "category2"],
       "related_concepts": ["related1", "related2"],
 
-      // For EPISODIC memories:
-      "emotional_valence": -1.0 to 1.0,
+      "emotional_valence": 0.5,
       "context": {"when": "...", "where": "...", "who": "..."},
 
-      // For PROCEDURAL memories:
       "steps": ["step1", "step2", "step3"],
       "prerequisites": ["prereq1", "prereq2"],
 
-      // For STRATEGIC memories:
       "pattern_description": "Description of the pattern or heuristic",
       "context_applicability": {"domains": [...], "conditions": [...]}
     }
@@ -603,10 +615,9 @@ class MemoryExtractor:
             memories = self._parse_response(response, chunk)
             return memories
         except Exception as e:
-            if self.config.verbose:
-                print(
-                    f"  Warning: Failed to extract memories from chunk {chunk.chunk_index}: {e}"
-                )
+            logger.warning(
+                f"Failed to extract memories from chunk {chunk.chunk_index}: {e}"
+            )
             return []
 
     def _parse_response(
@@ -615,12 +626,10 @@ class MemoryExtractor:
         """Parse the LLM response into ExtractedMemory objects."""
         # Handle error responses
         if response is None:
-            if self.config.verbose:
-                print("  Warning: Received None response from LLM")
+            logger.warning("Received None response from LLM")
             return []
         if response.startswith("[ERROR:"):
-            if self.config.verbose:
-                print("  Warning: Received error response from LLM")
+            logger.warning("Received error response from LLM")
             return []
 
         # Extract JSON from response (handle markdown code blocks)
@@ -641,8 +650,7 @@ class MemoryExtractor:
         try:
             data = json.loads(json_str)
         except json.JSONDecodeError as e:
-            if self.config.verbose:
-                print(f"  Warning: Failed to parse JSON: {e}")
+            logger.warning(f"Failed to parse JSON: {e}")
             return []
 
         memories = []
@@ -688,8 +696,7 @@ class MemoryExtractor:
                     memories.append(memory)
 
             except Exception as e:
-                if self.config.verbose:
-                    print(f"  Warning: Failed to parse memory: {e}")
+                logger.warning(f"Failed to parse memory: {e}")
                 continue
 
         return memories
@@ -844,7 +851,7 @@ class MemoryStore:
 class IngestionPipeline:
     """Main ingestion pipeline orchestrator."""
 
-    SUPPORTED_EXTENSIONS = {
+    SUPPORTED_EXTENSIONS: ClassVar[set[str]] = {
         ".md",
         ".markdown",  # Markdown
         ".txt",
@@ -1067,7 +1074,10 @@ Examples:
         "--api-key", default="not-needed", help="API key for the LLM endpoint"
     )
     parser.add_argument(
-        "--provider", default="openai", help="LLM provider: openai, ollama, openrouter"
+        "--provider",
+        default="openai",
+        choices=["openai", "ollama", "openrouter"],
+        help="LLM provider: openai, ollama, openrouter",
     )
 
     # Database options
