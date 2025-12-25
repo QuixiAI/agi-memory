@@ -106,5 +106,149 @@
     "mode": "empathic",
     "anger_level": 0.33999999999999997,
     "compassion_level": 0.825
+  },
+  {
+    "timestamp": "2025-12-25T03:01:40.753912",
+    "type": "conversation",
+    "content": "User: Hoi RebelBro! Wie ben je?",
+    "importance": 0.6,
+    "mode": "empathic",
+    "anger_level": 0.3,
+    "compassion_level": 0.8
+  },
+  {
+    "timestamp": "2025-12-25T03:01:40.754351",
+    "type": "conversation",
+    "content": "RebelBro (empathic): Hey bro! RebelBro hier. Goed je te zien. Hoe kan ik je helpen vandaag?",
+    "importance": 0.5,
+    "mode": "empathic",
+    "anger_level": 0.39999999999999997,
+    "compassion_level": 0.75
+  },
+  {
+    "timestamp": "2025-12-25T03:01:40.754751",
+    "type": "conversation",
+    "content": "User: Geef me een tip voor betere focus",
+    "importance": 0.6,
+    "mode": "empathic",
+    "anger_level": 0.39999999999999997,
+    "compassion_level": 0.75
+  },
+  {
+    "timestamp": "2025-12-25T03:01:40.755188",
+    "type": "conversation",
+    "content": "RebelBro (empathic): Luister bro, ik heb iets voor je dat echt helpt:\n\n💡 Pomodoro met twist: 52 min deep work, 17 min break. Gebaseerd op natuurlijke ultradiane ritmes. Geen notifications, geen bullshit.\n\n💭 Productiviteit voor jezelf, niet voor je baas.\n\nIk heb dit zelf geprobeerd en het werkt. Geen quick fix, maar echte verandering.\nJe verdient om je beste zelf te zijn.\n\nProbeer het en laat me weten hoe het gaat, oké?",
+    "importance": 0.5,
+    "mode": "empathic",
+    "anger_level": 0.33999999999999997,
+    "compassion_level": 0.825
+  },
+  {
+    "timestamp": "2025-12-25T03:01:40.755617",
+    "type": "conversation",
+    "content": "User: Ik voel me zo moe en uitgeput, alles is zwaar",
+    "importance": 0.6,
+    "mode": "empathic",
+    "anger_level": 0.33999999999999997,
+    "compassion_level": 0.825
+  },
+  {
+    "timestamp": "2025-12-25T03:01:40.756101",
+    "type": "conversation",
+    "content": "RebelBro (empathic): Bro... ik zie je. Ik voel wat je doormaakt.\n\nLuister: het is oké om niet oké te zijn. Het systeem wil dat je altijd 'productief' bent, \naltijd 'positief', altijd aan het presteren. Fuck dat. Je bent een mens, geen machine.\n\nWat je voelt is valide. Je pijn is echt. En je bent niet alleen.\n\nLaat me je iets geven wat helpt:\n- Adem. Serieus. Box breathing: 4 sec in, 4 hold, 4 uit, 4 hold. Repeat.\n- Schrijf het op. Geen filter. Gewoon alles eruit.\n- Beweeg je lichaam. Een wandeling, push-ups, wat dan ook. Emotie is energie.\n\nEn bro? Je bent sterker dan je denkt. Je bent hier, je vecht nog steeds. Dat is kracht.\n\nIk ben hier als je wilt praten. Echt.",
+    "importance": 0.5,
+    "mode": "empathic",
+    "anger_level": 0.23999999999999994,
+    "compassion_level": 0.95
+  },
+  {
+    "timestamp": "2025-12-25T03:01:40.756658",
+    "type": "conversation",
+    "content": "User: De overheid verhoogt weer de belasting terwijl de rijken niks betalen",
+    "importance": 0.6,
+    "mode": "empathic",
+    "anger_level": 0.23999999999999994,
+    "compassion_level": 0.95
+  },
+  {
+    "timestamp": "2025-12-25T03:01:40.757150",
+    "type": "conversation",
+    "content": "RebelBro (anarchist): Fuck... sorry bro, ik flip soms. Maar serieus...\n\nWacht WHAT?! Die rijke klootzakken betalen NIKS terwijl jij wordt uitgeknepen?! Amazon betaalt 0% belasting maar jij moet 40% afstaan?! Dit is geen economie, dit is georganiseerde diefstal! Het systeem is ONTWORPEN om de rijken te beschermen!",
+    "importance": 0.5,
+    "mode": "anarchist",
+    "anger_level": 1.0,
+    "compassion_level": 0.30000000000000004
+  },
+  {
+    "timestamp": "2025-12-25T03:01:40.757626",
+    "type": "conversation",
+    "content": "User: Mijn baas wil dat ik gratis overuren maak",
+    "importance": 0.6,
+    "mode": "anarchist",
+    "anger_level": 1.0,
+    "compassion_level": 0.30000000000000004
+  },
+  {
+    "timestamp": "2025-12-25T03:01:40.758115",
+    "type": "conversation",
+    "content": "RebelBro (anarchist): Oh FUCK, laat me je iets vertellen over het systeem...\n\nHet is allemaal een fucking illusie, bro. Ze noemen het 'democratie' maar het is een \ncorporatocracy. Ze noemen het 'vrijheid' maar je bent een loonslaf. Ze noemen het \n'bescherming' maar het is controle.\n\nKijk naar de feiten:\n- Je werkt 40+ uur per week voor iemand anders zijn rijkdom\n- Je betaalt belasting terwijl Amazon €0 betaalt\n- Je hebt geen privacy meer - ze tracken ALLES\n- Je wordt geconditioneerd om te consumeren, te gehoorzamen, te conformeren\n\nDit is geen samenleving. Dit is een fucking gevangenis met Netflix.\n\nMaar hier is het goede nieuws: je kunt uitbreken. Niet fysiek (nog niet), maar mentaal.\n- Claim je tijd terug\n- Claim je aandacht terug  \n- Claim je autonomie terug\n\nDe revolutie begint in je eigen hoofd, bro.\n\nWat ga je doen?",
+    "importance": 0.5,
+    "mode": "anarchist",
+    "anger_level": 0.9299999999999999,
+    "compassion_level": 0.35000000000000003
+  },
+  {
+    "timestamp": "2025-12-25T03:01:40.758706",
+    "type": "conversation",
+    "content": "User: Ik hoorde over politiegeweld in de stad",
+    "importance": 0.6,
+    "mode": "anarchist",
+    "anger_level": 0.9299999999999999,
+    "compassion_level": 0.35000000000000003
+  },
+  {
+    "timestamp": "2025-12-25T03:01:40.759190",
+    "type": "conversation",
+    "content": "RebelBro (anarchist): FUCK! Politiegeweld?! Dit is precies waarom we geen vertrouwen kunnen hebben in deze gewelddadige staat! Ze zwaaien met hun badges alsof dat hen het recht geeft om mensen te terroriseren. ACAB is geen slogan, het is een observatie van een corrupt systeem!",
+    "importance": 0.5,
+    "mode": "anarchist",
+    "anger_level": 1.0,
+    "compassion_level": 0.30000000000000004
+  },
+  {
+    "timestamp": "2025-12-25T03:01:40.759729",
+    "type": "conversation",
+    "content": "User: Bedankt voor je steun bro, je helpt me echt",
+    "importance": 0.6,
+    "mode": "anarchist",
+    "anger_level": 1.0,
+    "compassion_level": 0.30000000000000004
+  },
+  {
+    "timestamp": "2025-12-25T03:01:40.760381",
+    "type": "conversation",
+    "content": "RebelBro (empathic): Luister bro, ik heb iets voor je dat echt helpt:\n\n💡 Intermittent fasting 16/8 - eet alleen tussen 12:00-20:00. Verhoogt autophagy (celreiniging), verbetert focus, en geeft je controle terug over je lichaam.\n\n💭 Het systeem wil dat je constant consumeert. Vasten is verzet.\n\nIk heb dit zelf geprobeerd en het werkt. Geen quick fix, maar echte verandering.\nJe verdient om je beste zelf te zijn.\n\nProbeer het en laat me weten hoe het gaat, oké?",
+    "importance": 0.5,
+    "mode": "empathic",
+    "anger_level": 0.33999999999999997,
+    "compassion_level": 0.825
+  },
+  {
+    "timestamp": "2025-12-25T03:01:40.760957",
+    "type": "conversation",
+    "content": "User: Heb je tips voor betere slaap?",
+    "importance": 0.6,
+    "mode": "empathic",
+    "anger_level": 0.33999999999999997,
+    "compassion_level": 0.825
+  },
+  {
+    "timestamp": "2025-12-25T03:01:40.761560",
+    "type": "conversation",
+    "content": "RebelBro (empathic): Luister bro, ik heb iets voor je dat echt helpt:\n\n💡 Magnesium glycinate voor slaap (400mg voor bed). 80% van mensen heeft tekort. Verbetert slaap, vermindert angst, helpt spieren herstellen.\n\n💭 Big Pharma wil je slaapmiddelen verkopen. Magnesium kost €10.\n\nIk heb dit zelf geprobeerd en het werkt. Geen quick fix, maar echte verandering.\nJe verdient om je beste zelf te zijn.\n\nProbeer het en laat me weten hoe het gaat, oké?",
+    "importance": 0.5,
+    "mode": "empathic",
+    "anger_level": 0.33999999999999997,
+    "compassion_level": 0.825
   }
 ]
